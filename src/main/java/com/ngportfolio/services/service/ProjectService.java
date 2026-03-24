@@ -1,22 +1,21 @@
 package com.ngportfolio.services.service;
 
 import com.ngportfolio.entities.Project;
-import com.ngportfolio.repositories.ProjectRepository;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
-@Service
-public class ProjectService {
+public interface ProjectService {
 
-    private final ProjectRepository repo;
+    // Create a project
 
 
-    public ProjectService(ProjectRepository repo) {
-        this.repo = repo;
-    }
+    // List of projects
+    List<Project> getAllProjects();
 
-    public List<Project> getAllProjects(){
-        return repo.findAll();
-    }
+    // Update a project
+
+    // Delete a project
+
+    //Search projects
 }
