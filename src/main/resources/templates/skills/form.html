@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire Skill</title>
+</head>
+<body>
+
+<h1 th:text="${skills.id==null ? 'Ajouter' : 'Modifier'} + ' une compétence '"></h1>
+<form th:action="${skills.id == null ? '/skills' : '/skills/update/' + skills.id}" th:object="${skills}" method="post">
+    <input type="hidden" th:field="*{id}"/><br/>
+    <label>Nom:</label>
+    <input type="text" th:field="*{name}"/><br/>
+    <label>Niveau:</label>
+    <input type="text" th:field="*{graduate}"/><br/>
+    <label>Catégorie:</label>
+    <input type="text" th:field="*{category}"/><br/>
+
+    <button type="submit">Enregistrer</button>
+</form>
+</body>
+</html>

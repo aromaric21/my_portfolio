@@ -6,15 +6,10 @@ import java.util.List;
 
 public interface SkillsService {
 
-    // Create a skill
-
-
-    // List of skills
     List<Skills> getAllSkills();
+    Skills getById(Long id);
+    Skills save(Skills skill);
+    Skills update(Long id, Skills skill);
+    void delete(Long id);
 
-    // Update a skill
-
-    // Delete a skill
-
-    //Search skills
 }

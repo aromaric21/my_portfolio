@@ -1,11 +1,15 @@
 package com.ngportfolio.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "skills")
+@Data                     // génère getters, setters, toString, equals, hashCode
+@AllArgsConstructor       // constructeur avec tous les champs
+@NoArgsConstructor       // constructeur vide
 public class Skills {
 
     @Id
@@ -13,5 +17,6 @@ public class Skills {
     public Long id;
     public String name;
     public String graduate;
+    private String category;
 
 }

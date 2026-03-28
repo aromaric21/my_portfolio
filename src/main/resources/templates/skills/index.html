@@ -1,11 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>Portfolio</title>
+    <title>Mes Compétences</title>
     <meta charset="UTF-8">
 </head>
 <body>
-<h1>Index Skills</h1>
-<h2>Welcome in my Skills section!</h2>
+<h1>Compétences</h1>
+
+<!-- Message de confirmation -->
+<p th:if="${message}" th:text="${message}" style="color: green;"></p>
+
+<a th:href="@{/skills/new}">Ajouter une compétence</a>
+
+<ul>
+    <li th:each="skill : ${skills}">
+        <span th:text="${skill.name}"></span> -
+        <span th:text="${skill.graduate}"></span>
+        (<span th:text="${skill.category}"></span>)
+
+        <a th:href="@{/skills/edit/{id}(id=${skill.id})}">Modifier</a>
+        <a th:href="@{/skills/delete/{id}(id=${skill.id})}">Supprimer</a>
+    </li>
+</ul>
 </body>
 </html>
