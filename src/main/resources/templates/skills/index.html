@@ -3,24 +3,48 @@
 <head>
     <title>Mes Compétences</title>
     <meta charset="UTF-8">
+    <!-- Lien vers Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
 </head>
-<body>
-<h1>Compétences</h1>
+<body class="bg-light">
 
-<!-- Message de confirmation -->
-<p th:if="${message}" th:text="${message}" style="color: green;"></p>
+<div class="container py-5">
+    <h1 class="text-center mb-4">Compétences</h1>
 
-<a th:href="@{/skills/new}">Ajouter une compétence</a>
+    <!-- Message de confirmation -->
+    <div th:if="${message}" class="alert alert-success text-center" th:text="${message}">
+    </div>
+    <a th:href="@{/skills/new}">Ajouter une compétence</a>
 
-<ul>
-    <li th:each="skill : ${skills}">
-        <span th:text="${skill.name}"></span> -
-        <span th:text="${skill.graduate}"></span>
-        (<span th:text="${skill.category}"></span>)
+    <div class="row g-4">
+        <div class="col-md-4 col-sm-6" th:each="skill : ${skills}">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold" th:text="${skill.name}"></h5> -
+                    <p class="card-text text-success" th:text="${skill.graduate}"></p>
+                    <p class="card-text text-muted" th:text="${skill.domain}"></p>
+                    <p class="card-text text-muted" th:text="${skill.category}"></p>
+                </div>
+                <div class="card-footer text-center">
+                    <a th:href="@{/skills/edit/{id}(id=${skill.id})}" class="btn btn-sm btn-primary">
+                        Modifier
+                    </a>
+                    <a th:href="@{/skills/delete/{id}(id=${skill.id})}" class="btn btn-sm btn-danger">
+                        Supprimer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <a th:href="@{/skills/edit/{id}(id=${skill.id})}">Modifier</a>
-        <a th:href="@{/skills/delete/{id}(id=${skill.id})}">Supprimer</a>
-    </li>
-</ul>
+<!-- Script Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous">
+</script>
 </body>
 </html>

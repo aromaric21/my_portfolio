@@ -7,14 +7,17 @@
 <body>
 
 <h1 th:text="${skills.id==null ? 'Ajouter' : 'Modifier'} + ' une compétence '"></h1>
-<form th:action="${skills.id == null ? '/skills' : '/skills/update/' + skills.id}" th:object="${skills}" method="post">
+<form th:action="${skills.id == null ? '/skills' : '/skills/update/' + skills.id}"
+      th:object="${skills}" method="post">
     <input type="hidden" th:field="*{id}"/><br/>
     <label>Nom:</label>
-    <input type="text" th:field="*{name}"/><br/>
+    <input type="text" th:field="*{name}" required /><br/>
+    <label>Domain:</label>
+    <input type="text" th:field="*{domain}" required /><br/>
     <label>Niveau:</label>
-    <input type="text" th:field="*{graduate}"/><br/>
+    <input type="text" th:field="*{graduate}" required /><br/>
     <label>Catégorie:</label>
-    <input type="text" th:field="*{category}"/><br/>
+    <input type="text" th:field="*{category}"  /><br/>
 
     <button type="submit">Enregistrer</button>
 </form>

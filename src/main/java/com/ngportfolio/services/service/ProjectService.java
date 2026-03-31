@@ -7,15 +7,12 @@ import java.util.List;
 
 public interface ProjectService {
 
-    // Create a project
-
-
     // List of projects
     List<Project> getAllProjects();
-
+    Project getById(Long id);
+    Project save(Project project);
     // Update a project
-
+    Project update(Long id, Project project);
     // Delete a project
-
-    //Search projects
+    void delete(Long id);
 }

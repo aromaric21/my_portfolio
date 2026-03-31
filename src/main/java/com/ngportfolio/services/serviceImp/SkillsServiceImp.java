@@ -34,6 +34,7 @@ public class SkillsServiceImp implements SkillsService{
         Skills existing = skillsRepo.findById(id).orElseThrow();
         existing.setName(skills.getName());
         existing.setGraduate(skills.getGraduate());
+        existing.setDomain(skills.getDomain());
         existing.setCategory(skills.getCategory());
         return skillsRepo.save(existing);
     }

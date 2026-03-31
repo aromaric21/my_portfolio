@@ -1,18 +1,22 @@
 package com.ngportfolio.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name ="messages")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public String messageContent;
+    public String senderName;
+    public String senderEmail;
+    public String senderContact;
+    public String subject;
+    public String content;
 }
