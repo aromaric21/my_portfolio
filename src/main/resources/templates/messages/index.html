@@ -13,14 +13,19 @@
 <div class="container py-5">
     <h1 class="text-center mb-4">Me contacter</h1>
 
-    <div th:if="${messageSuccess}" class="alert alert-success text-center" th:text="${messageSuccess}"></div>
+    <div th:if="${messageSuccess}"
+         class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        <span th:text="${messageSuccess}"></span>
+    </div>
 
     <a th:href="@{/messages/new}" class="btn btn-success mb-3">Écrire un message</a>
 
     <div class="list-group">
         <div th:each="msg : ${messages}" class="list-group-item">
             <h5 th:text="${msg.subject}"></h5>
-            <p><strong th:text="${msg.senderName}"></strong> (<span th:text="${msg.senderEmail}"></span>)</p>
+            <p><strong th:text="${msg.senderName}">
+            </strong> (<span th:text="${msg.senderEmail}">
+            </span>)</p>
             <p th:text="${msg.senderContact}"></p>
             <p th:text="${msg.content}"></p>
             <a th:href="@{/messages/edit/{id}(id=${msg.id})}" class="btn btn-sm btn-primary">Modifier</a>

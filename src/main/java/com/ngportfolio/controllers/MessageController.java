@@ -19,7 +19,7 @@ public class MessageController {
     //http://localhost:8080/messages
     @GetMapping
     public String listMessages(Model model) {
-        model.addAttribute("message", messageService.getAllMessages());
+        model.addAttribute("messages", messageService.getAllMessages());
         return "messages/index";
     }
 
