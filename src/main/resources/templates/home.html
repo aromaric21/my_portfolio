@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <title>Accueil</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="layout :: header"></div>
+
+<!-- Messages -->
+<div th:replace="layout :: messages"></div>
+
+<!-- Contenu spécifique -->
+<div th:fragment="pageContent">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Bienvenue sur mon Portfolio</h1>
+        <p class="lead text-center">
+            Je suis N’guessan Romaric ADJEI, développeur passionné par le web et le desktop,
+            avec une expertise en bases de données, génie logiciel et sécurité réseau.
+            Explorez mes projets et mon profil pour découvrir mon travail.
+        </p>
+        <div class="text-center mt-4">
+            <a th:href="@{/about}" class="btn btn-primary">En savoir plus</a>
+            <a th:href="@{/projects}" class="btn btn-success">Voir mes projets</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="layout :: footer"></div>
+</body>
+</html>

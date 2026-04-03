@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <title>À propos de moi</title>
+</head>
+<body>
+<div th:replace="layout :: header"></div>
+<div th:replace="layout :: messages"></div>
+
+<!-- Contenu spécifique -->
+<div th:fragment="pageContent">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">À mon propos</h1>
+        <p class="lead text-center">
+            Bienvenue sur mon portfolio ! Je suis N’guessan, passionné par la création
+            d’applications modernes et sécurisées. Mon objectif est d’impacter à l’international
+            grâce à des solutions innovantes et fiables.
+        </p>
+        <p class="text-center">
+            Explorez mes projets et mon profil pour découvrir mon parcours et mes compétences.
+        </p>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="layout :: footer"></div>
+</body>
+</html>

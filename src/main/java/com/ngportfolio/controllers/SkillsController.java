@@ -32,9 +32,15 @@ public class SkillsController {
     @PostMapping
     public String saveSkill(@ModelAttribute Skills skills,
                             RedirectAttributes redirectAttributes){
-        skillsService.save(skills);
-        redirectAttributes.addFlashAttribute("message",
-                "Compétence ajoutée avec succès !");
+
+        try {
+            skillsService.save(skills);
+            redirectAttributes.addFlashAttribute("messageSuccess",
+                    "Compétence ajoutée avec succès !");
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("messageError",
+                    "Une erreur est survenue lors de l'enregistrement du message.");
+        }
         return "redirect:/skills";
     }
 

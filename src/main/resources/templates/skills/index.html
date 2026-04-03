@@ -1,50 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <title>Mes Compétences</title>
-    <meta charset="UTF-8">
-    <!-- Lien vers Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-          crossorigin="anonymous">
+<head th:replace="layout::head">
+    <title>Compétences</title>
 </head>
 <body class="bg-light">
 
-<div class="container py-5">
-    <h1 class="text-center mb-4">Compétences</h1>
+<!-- Header -->
+<div th:replace="layout :: header"></div>
+<!-- Messages -->
+<div th:replace="layout::messages"></div>
 
-    <!-- Message de confirmation -->
-    <div th:if="${message}" class="alert alert-success text-center" th:text="${message}">
-    </div>
-    <a th:href="@{/skills/new}">Ajouter une compétence</a>
+<!-- Contenu spécifique -->
+<div th:fragment="pageContent">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Mes Compétences</h1>
+        <a th:href="@{/skills/new}" class="btn btn-success mb-3">Ajouter une compétence</a>
 
-    <div class="row g-4">
-        <div class="col-md-4 col-sm-6" th:each="skill : ${skills}">
-            <div class="card shadow-sm h-100">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold" th:text="${skill.name}"></h5> -
-                    <p class="card-text text-success" th:text="${skill.graduate}"></p>
-                    <p class="card-text text-muted" th:text="${skill.domain}"></p>
-                    <p class="card-text text-muted" th:text="${skill.category}"></p>
-                </div>
-                <div class="card-footer text-center">
-                    <a th:href="@{/skills/edit/{id}(id=${skill.id})}" class="btn btn-sm btn-primary">
-                        Modifier
-                    </a>
-                    <a th:href="@{/skills/delete/{id}(id=${skill.id})}" class="btn btn-sm btn-danger">
-                        Supprimer
-                    </a>
+        <div class="row g-4">
+            <div class="col-md-4 col-sm-6" th:each="skill : ${skills}">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold" th:text="${skill.name}"></h5> -
+                        <p class="card-text text-success" th:text="${skill.graduate}"></p>
+                        <p class="card-text text-muted" th:text="${skill.domain}"></p>
+                        <p class="card-text text-muted" th:text="${skill.category}"></p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a th:href="@{/skills/edit/{id}(id=${skill.id})}" class="btn btn-sm btn-primary">
+                            Modifier
+                        </a>
+                        <a th:href="@{/skills/delete/{id}(id=${skill.id})}" class="btn btn-sm btn-danger">
+                            Supprimer
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Script Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous">
-</script>
+<!-- Footer -->
+<div th:replace="layout :: footer"></div>
 </body>
 </html>

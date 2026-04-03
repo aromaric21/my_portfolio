@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <title>Mon profile</title>
+</head>
+<body>
+<div th:replace="layout :: header"></div>
+<div th:replace="layout :: messages"></div>
+
+<!-- Contenu spécifique -->
+<div th:fragment="pageContent">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Mon Profil</h1>
+        <p class="lead text-center">
+            Je suis N’guessan, développeur passionné par le développement web et desktop,
+            titulaire d’un Master en Bases de données et Génie logiciel, ainsi qu’en Réseaux et Sécurité.
+            Certifié CCNA, je conçois des applications robustes et sécurisées.
+        </p>
+        <ul class="list-group mt-4">
+            <li class="list-group-item">Compétences Backend : Java 21, Spring Boot, MySQL</li>
+            <li class="list-group-item">Compétences Frontend : Bootstrap, Thymeleaf</li>
+            <li class="list-group-item">Sécurité & Réseaux : CCNA, bonnes pratiques de sécurité</li>
+        </ul>
+        <a class="btn btn-outline-primary" th:href="@{/files/cv.pdf}" target="_blank">
+            Télécharger mon CV
+        </a>
+    </div>
+</div>
+
+<div th:replace="layout :: footer"></div>
+</body>
+</html>

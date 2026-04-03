@@ -1,43 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Messages reçus</title>
-    <meta charset="UTF-8">
-    <!-- Lien vers Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-          crossorigin="anonymous">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <title>Mes Messages</title>
 </head>
-<body class="bg-light">
-<div class="container py-5">
-    <h1 class="text-center mb-4">Me contacter</h1>
+<body>
+<div th:replace="layout :: header"></div>
+<div th:replace="layout :: messages"></div>
 
-    <div th:if="${messageSuccess}"
-         class="alert alert-success alert-dismissible fade show text-center" role="alert">
-        <span th:text="${messageSuccess}"></span>
-    </div>
+<!-- Contenu spécifique -->
+<div th:fragment="pageContent">
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Me contacter</h1>
 
-    <a th:href="@{/messages/new}" class="btn btn-success mb-3">Écrire un message</a>
+        <div th:if="${messageSuccess}"
+             class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            <span th:text="${messageSuccess}"></span>
+        </div>
 
-    <div class="list-group">
-        <div th:each="msg : ${messages}" class="list-group-item">
-            <h5 th:text="${msg.subject}"></h5>
-            <p><strong th:text="${msg.senderName}">
-            </strong> (<span th:text="${msg.senderEmail}">
+        <a th:href="@{/messages/new}" class="btn btn-success mb-3">Laissez-moi un message</a>
+
+        <div class="list-group">
+            <div th:each="msg : ${messages}" class="list-group-item">
+                <h5 th:text="${msg.subject}"></h5>
+                <p><strong th:text="${msg.senderName}">
+                </strong> (<span th:text="${msg.senderEmail}">
             </span>)</p>
-            <p th:text="${msg.senderContact}"></p>
-            <p th:text="${msg.content}"></p>
-            <a th:href="@{/messages/edit/{id}(id=${msg.id})}" class="btn btn-sm btn-primary">Modifier</a>
-            <a th:href="@{/messages/delete/{id}(id=${msg.id})}" class="btn btn-sm btn-danger">Supprimer</a>
+                <p th:text="${msg.senderContact}"></p>
+                <p th:text="${msg.content}"></p>
+                <a th:href="@{/messages/edit/{id}(id=${msg.id})}" class="btn btn-sm btn-primary">Modifier</a>
+                <a th:href="@{/messages/delete/{id}(id=${msg.id})}" class="btn btn-sm btn-danger">Supprimer</a>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Script Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous">
-</script>
+<!-- Footer -->
+<div th:replace="layout :: footer"></div>
 </body>
 </html>

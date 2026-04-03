@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
+<head th:replace="layout::head">
     <title>Formulaire Skill</title>
 </head>
+
 <body>
+<!-- Header -->
+<div th:replace="layout :: header"></div>
+<!-- Messages -->
+<div th:replace="layout::messages"></div>
 
-<h1 th:text="${skills.id==null ? 'Ajouter' : 'Modifier'} + ' une compétence '"></h1>
-<form th:action="${skills.id == null ? '/skills' : '/skills/update/' + skills.id}"
-      th:object="${skills}" method="post">
-    <input type="hidden" th:field="*{id}"/><br/>
-    <label>Nom:</label>
-    <input type="text" th:field="*{name}" required /><br/>
-    <label>Domain:</label>
-    <input type="text" th:field="*{domain}" required /><br/>
-    <label>Niveau:</label>
-    <input type="text" th:field="*{graduate}" required /><br/>
-    <label>Catégorie:</label>
-    <input type="text" th:field="*{category}"  /><br/>
+<!-- Contenu spécifique -->
+<div th:fragment="pageContent">
+    <div class="container py-5">
+        <h1 th:text="${skills.id==null ? 'Ajouter' : 'Modifier'} + ' une compétence '"></h1>
+        <form th:action="${skills.id == null ? '/skills' : '/skills/update/' + skills.id}"
+              th:object="${skills}" method="post" class="mt-3">
+            <input type="hidden" th:field="*{id}"/>
 
-    <button type="submit">Enregistrer</button>
-</form>
+            <div class="mb-3">
+                <label class="form-label">Nom:</label>
+                <input type="text" th:field="*{name}" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Domain:</label>
+                <input type="text" th:field="*{domain}" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Niveau:</label>
+                <input type="text" th:field="*{graduate}" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Catégorie:</label>
+                <input type="text" th:field="*{category}" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:replace="layout :: footer"></div>
 </body>
 </html>

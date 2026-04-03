@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle} ?: 'Mon Portfolio'"></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header -->
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/}">
+                <img src="/images/logo.png" alt="Logo" width="40" height="40" class="me-2">
+                Mon Portfolio
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPortfolio">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarPortfolio">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:text="#{menu.cv}" th:href="@{/cv}">Mon CV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:text="#{menu.about}" th:href="@{/about}">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:text="#{menu.profile}" th:href="@{/profile}">Mon profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:text="#{menu.skills}" th:href="@{/skills}">Compétences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:text="#{menu.projects}" th:href="@{/projects}">Projets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:text="#{menu.contact}" th:href="@{/messages}">Contactez-moi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Messages -->
+<div th:fragment="messages">
+    <div th:if="${messageSuccess}" class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        <span th:text="${messageSuccess}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+    </div>
+    <div th:if="${messageError}" class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+        <span th:text="${messageError}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+    </div>
+</div>
+
+<!-- Bloc de contenu dynamique -->
+<main th:fragment="content">
+    <!-- Ici le contenu spécifique de chaque page sera injecté -->
+    <div th:insert="${content}"></div>
+</main>
+
+<!-- Footer -->
+<footer th:fragment="footer" class="bg-dark text-white pt-4 pb-2 mt-5">
+    <div class="container text-center">
+        <hr class="border-light">
+        <p class="small mb-0">&copy; 2026 Mon Portfolio - Tous droits réservés</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

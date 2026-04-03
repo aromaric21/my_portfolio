@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <title>Mon profile</title>
+</head>
+<body>
+<div th:replace="layout :: header"></div>
+<div th:replace="layout :: messages"></div>
+
+<!-- Contenu spécifique -->
+<div th:fragment="pageContent">
+    <div class="container py-5">
+        <h2 class="mb-4">Curriculum Vitae</h2>
+        <ul class="list-group">
+            <li class="list-group-item">🎓 Master en Bases de données et Génie logiciel</li>
+            <li class="list-group-item">🎓 Master en Réseaux et Sécurité</li>
+            <li class="list-group-item">📜 Certification CCNA</li>
+            <li class="list-group-item">💻 Développement Web & Desktop (Java, Spring Boot, MySQL, Bootstrap, Thymeleaf)</li>
+        </ul>
+    </div>
+</div>
+
+<div th:replace="layout :: footer"></div>
+</body>
+</html>
+
